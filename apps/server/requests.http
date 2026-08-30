@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:3000/api
+@token = paste-token-from-login-here
+
+### 健康检查：无需登录
+GET {{baseUrl}}/health
+
+### 登录演示账号
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "student@example.com",
+  "password": "Fullstack123!"
+}
+
+### 当前用户：把上一个响应中的 token 复制到文件顶部
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{token}}
+
+### 项目列表
+GET {{baseUrl}}/projects
+Authorization: Bearer {{token}}
+
+### 创建项目
+POST {{baseUrl}}/projects
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "我的全栈练习",
+  "description": "通过接口理解 Controller 和 Service"
+}
+
+### 查询项目任务
+GET {{baseUrl}}/projects/1/tasks?status=todo&priority=high
+Authorization: Bearer {{token}}
+

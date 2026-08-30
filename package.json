@@ -1,0 +1,26 @@
+{
+  "name": "miniboard-fullstack-learning-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A learning-first Vue + Express + MySQL full-stack demo.",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names API,WEB --prefix-colors blue,magenta \"npm run dev -w @miniboard/server\" \"npm run dev -w @miniboard/web\"",
+    "dev:server": "npm run dev -w @miniboard/server",
+    "dev:web": "npm run dev -w @miniboard/web",
+    "build": "npm run build -w @miniboard/server && npm run build -w @miniboard/web",
+    "test": "npm run test -w @miniboard/server",
+    "typecheck": "npm run typecheck -w @miniboard/server && npm run typecheck -w @miniboard/web",
+    "db:migrate": "npm run db:migrate -w @miniboard/server",
+    "db:seed": "npm run db:seed -w @miniboard/server"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
+
